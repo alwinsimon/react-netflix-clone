@@ -1,3 +1,8 @@
+
+
+//? =========================================== URLS ===========================================
+
+
 export const LOGO =
   "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png";
 
@@ -13,6 +18,10 @@ export const CARD =
 
 export const TMDB_BASE_URL = "https://api.themoviedb.org/3"
 
+export const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original"
+
 export const TMDB_TRENDING_MOVIE_URL = `trending/all/week?api_key=5605240ea0cb07737fac744ddafcbef4&language=en-US`
 
-export const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original"
+export const TMDB_MOVIES_SUGGESTION_URL = `discover/tv?api_key=5605240ea0cb07737fac744ddafcbef4&with_networks=213`
+
+export const TMDB_MOVIES_ACTION_URL = `discover/movie?api_key=5605240ea0cb07737fac744ddafcbef4&with_genres=28`

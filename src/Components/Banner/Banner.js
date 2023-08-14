@@ -42,8 +42,6 @@ function Banner() {
 
                 <h1 className="description"> {movieData ? movieData.overview : "" } </h1>
 
-                <p>asas</p>
-
             </div>
 
             <div className="fade_bottom">

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './RowPost.css';
-import { CARD } from '../../utils/constants';
+import { CARD } from "../../constants/constants";
 
 
 function RowPost() {

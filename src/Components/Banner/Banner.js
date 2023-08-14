@@ -1,18 +1,37 @@
-import React from "react";
-
+import React, {useEffect, useState } from "react";
 import "./Banner.css"
+import { axiosInstanceForMovieData } from "../../axios"
+import { TMDB_TRENDING_MOVIE_URL, TMDB_IMAGE_BASE_URL } from "../../constants/constants"
 
 
 
 function Banner() {
 
+    const [movieData, setMovieData] = useState('');
+
+    useEffect(() => {
+
+        axiosInstanceForMovieData.get(TMDB_TRENDING_MOVIE_URL).then((response) => {
+
+            const randomIndex = Math.floor(Math.random() * response.data.results.length);
+
+            setMovieData(response.data.results[randomIndex]);
+
+        });
+
+
+    }, []);
+    
+
+
+
     return(
         
-        <div className="banner">
+        <div className="banner" style={{ backgroundImage: `url(${movieData ? TMDB_IMAGE_BASE_URL + movieData.backdrop_path : ""})`}} >
 
             <div className="content" >
 
-                <h1 className="title"> Movie Name </h1>
+                <h1 className="title"> {movieData ? movieData.title : ""} </h1>
 
                 <div className="banner_buttons">
 
@@ -21,9 +40,9 @@ function Banner() {
 
                 </div>
 
-                <h1 className="description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                </h1>
+                <h1 className="description"> {movieData ? movieData.overview : "" } </h1>
+
+                <p>asas</p>
 
             </div>
 

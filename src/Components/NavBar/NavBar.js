@@ -2,8 +2,8 @@ import React from "react";
 
 import "./NavBar.css"
 
-import { LOGO } from "../../utils/constants";
-import { NAVBAR_AVATAR } from "../../utils/constants";
+import { LOGO } from "../../constants/constants";
+import { NAVBAR_AVATAR } from "../../constants/constants";
 
 
 function NavBar() {

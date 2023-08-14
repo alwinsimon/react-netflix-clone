@@ -12,3 +12,7 @@ export const CARD =
   "https://images.squarespace-cdn.com/content/v1/59232e19579fb3fa44a693c2/1589212826160-UM9PEPGOS3OJPR0FJ81X/ke17ZwdGBToddI8pDm48kHZUaJeKzodyg_sXWBMxNTdZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxCBUU7B-_SAG1kGvCwYgmUjQXvn8_OJjtz3K1llMQBa1MPsuSXPSY3X-tgg78M7lI/SKOyqL1qFLIhbK6ho2lB-696x975.jpg?format=1500w";
 
 export const TMDB_BASE_URL = "https://api.themoviedb.org/3"
+
+export const TMDB_TRENDING_MOVIE_URL = `trending/all/week?api_key=5605240ea0cb07737fac744ddafcbef4&language=en-US`
+
+export const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original"

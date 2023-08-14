@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from 'react';
+import YouTubePlayer  from 'react-youtube';
 
 import './RowPost.css';
 import { axiosInstanceForMovieData } from '../../axios';
-import { TMDB_IMAGE_BASE_URL, TMDB_MOVIES_SUGGESTION_URL } from '../../constants/constants';
+import { TMDB_IMAGE_BASE_URL } from '../../constants/constants';
 
 
 function RowPost(props) {
 
     const [suggestedMovies, setSuggestedMovies] = useState([]);
+
+    const [movieDataForYoutubeSearch, setMovieDataForYoutubeSearch] = useState(false);
 
     useEffect(() => {
       
@@ -21,7 +24,50 @@ function RowPost(props) {
 
         });
 
-    }, [])
+    }, []);
+
+    const opts = {
+
+      height: "390",
+      width: "100%",
+      playerVars: {
+        autoplay: 0
+      }
+
+    };
+
+    const handleMoviePosterClick = (movieId) => {
+
+        axiosInstanceForMovieData.get(`/movie/${movieId}/videos?api_key=5605240ea0cb07737fac744ddafcbef4&language=en-US`).then((movieDetails)=>{
+            
+            if (movieDetails.data.results.length > 0) {
+
+                setMovieDataForYoutubeSearch(movieDetails.data.results[0]);
+            
+            }else{
+
+                const movieDetails = { key:"Y1DZZvTnOH8"};
+
+                setMovieDataForYoutubeSearch(movieDetails);
+
+            }
+
+        }).catch((error)=> {
+
+            const movieDetails = { key:"Y1DZZvTnOH8"};
+            setMovieDataForYoutubeSearch(movieDetails);
+
+            console.log(error);
+
+        });
+
+    }
+
+    const handleVideoClick = () => {
+        
+        setMovieDataForYoutubeSearch();
+
+    }
     
 
     
@@ -35,15 +81,18 @@ function RowPost(props) {
 
                 {
                 
-                    suggestedMovies.map((movie)=>{
+                    suggestedMovies.map((movie, index)=>{
 
-                        return <img className={props.isSmall ? 'smallPoster' : 'poster'} alt='poster' src={`${TMDB_IMAGE_BASE_URL + movie.backdrop_path}`} />
+                        return <img className={props.isSmall ? 'smallPoster' : 'poster'} key={index} alt='poster' src={`${TMDB_IMAGE_BASE_URL + movie.backdrop_path}`} onClick={()=>handleMoviePosterClick(movie.id)} />
 
                     })
                     
                 }
 
             </div>
+
+            {movieDataForYoutubeSearch && < YouTubePlayer videoId={movieDataForYoutubeSearch.key} opts={opts} />}
+            {movieDataForYoutubeSearch && <button className="button" onClick={()=>handleVideoClick()} > Close Trailer </button> }
 
         </div>
 

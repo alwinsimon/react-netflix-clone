@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 
 import './RowPost.css';
 import { axiosInstanceForMovieData } from '../../axios';
-import { TMDB_IMAGE_BASE_URL, TMDB_MOVIES_SUGGESTION_URL } from '../../constants/constants';
+import { TMDB_IMAGE_BASE_URL } from '../../constants/constants';
 
 
 function RowPost(props) {
